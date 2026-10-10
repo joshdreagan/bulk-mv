@@ -1,5 +1,7 @@
 package com.joshdreagan.bmv.engine;
 
+import io.smallrye.common.constraint.NotNull;
+
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -30,13 +32,13 @@ public class FileScanner {
             int maxDepth = compiledPattern.isRecursive() ? Integer.MAX_VALUE : calculateDepth(compiledPattern.originalPattern());
             Files.walkFileTree(baseSearch, Collections.emptySet(), maxDepth, new SimpleFileVisitor<>() {
                 @Override
-                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                public @NotNull FileVisitResult visitFile(@NotNull Path file, @NotNull BasicFileAttributes attrs) {
                     discoveredPaths.add(file);
                     return FileVisitResult.CONTINUE;
                 }
 
                 @Override
-                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
+                public @NotNull FileVisitResult preVisitDirectory(@NotNull Path dir, @NotNull BasicFileAttributes attrs) {
                     if (!dir.equals(baseSearch) && !dir.equals(workingDir)) {
                         discoveredPaths.add(dir);
                     }

@@ -15,10 +15,7 @@ public class GlobToRegexCompiler {
     }
 
     public static CompiledPattern compile(String globPattern) {
-        // Normalize path separators to forward slash
-        String normalized = globPattern.replace('\\', '/');
-
-        // Extract base search directory (literal path before any wildcard or parenthesis)
+      // Extract base search directory (literal path before any wildcard or parenthesis)
         Path baseDir = extractBaseDir(globPattern);
 
         // Build regex

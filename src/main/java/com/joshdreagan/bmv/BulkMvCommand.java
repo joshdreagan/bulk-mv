@@ -31,9 +31,6 @@ public class BulkMvCommand implements Callable<Integer> {
     @Option(names = {"-v", "--verbose"}, description = "Verbose: print each command as it's executed.")
     boolean verbose;
 
-    @Option(names = {"-q"}, description = "Turn bare glob qualifiers off (default).")
-    boolean bareGlobQualifiersOff;
-
     @Option(names = {"-Q"}, description = "Force bare glob qualifiers on.")
     boolean bareGlobQualifiersOn;
 
@@ -51,9 +48,6 @@ public class BulkMvCommand implements Callable<Integer> {
 
     @Option(names = {"-L"}, description = "Force ln (link) instead of mv.")
     boolean actionLink;
-
-    @Option(names = {"-M"}, description = "Force mv (move) action (default).")
-    boolean actionMove;
 
     @Option(names = {"-p"}, description = "Call program instead of cp, ln or mv (supports --).")
     String program;

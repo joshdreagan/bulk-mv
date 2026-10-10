@@ -85,7 +85,7 @@ public class BulkMvEngine {
             String f = mf.relativePath();
             String g = ReplacementProcessor.evaluate(transformed.replacementPattern(), f, mf.captureGroups());
 
-            if (g == null || g.isEmpty()) {
+            if (g.isEmpty()) {
                 errors.add("`" + f + "' expanded to an empty string");
                 continue;
             }

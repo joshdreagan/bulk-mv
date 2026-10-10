@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class PatternTransformer {
 
     private static final Pattern WILDCARD_PATTERN = Pattern.compile(
-            "(\\*\\*+/|\\*+|\\?+|<\\d*-\\d*>|\\[(?:\\[:[a-z]+:\\]|\\\\.|\\]|[^]])+\\])"
+      "(\\*\\*+/|\\*+|\\?+|<\\d*-\\d*>|\\[(?:\\[:[a-z]+:]|\\\\.|]|[^]])+])"
     );
 
     public record TransformResult(String searchPattern, String replacementPattern, int searchWildcardCount, int replacementWildcardCount) {
