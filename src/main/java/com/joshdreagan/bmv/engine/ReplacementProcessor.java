@@ -1,7 +1,5 @@
 package com.joshdreagan.bmv.engine;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +7,7 @@ import java.util.regex.Pattern;
 public class ReplacementProcessor {
 
     private static final Pattern VAR_PATTERN = Pattern.compile(
-            "\\$(?:(\\d+)|\\{([^}]+)\\}|([a-zA-Z_][a-zA-Z0-9_]*))"
+      "\\$(?:(\\d+)|\\{([^}]+)}|([a-zA-Z_][a-zA-Z0-9_]*))"
     );
 
     public static String evaluate(String replacementPattern, String matchedFile, List<String> captureGroups) {
@@ -112,7 +110,6 @@ public class ReplacementProcessor {
                 searchPattern = rest;
                 replaceStr = "";
             }
-            replaceAll = false;
         } else if (work.contains(":")) {
             int colon = work.indexOf(':');
             varName = work.substring(0, colon);
@@ -174,14 +171,14 @@ public class ReplacementProcessor {
                 case ":r" -> { // Root (remove extension)
                     int lastDot = current.lastIndexOf('.');
                     int lastSlash = current.lastIndexOf('/');
-                    if (lastDot > lastSlash && lastDot != -1) {
+                    if (lastDot > lastSlash) {
                         current = current.substring(0, lastDot);
                     }
                 }
                 case ":e" -> { // Extension
                     int lastDot = current.lastIndexOf('.');
                     int lastSlash = current.lastIndexOf('/');
-                    if (lastDot > lastSlash && lastDot != -1) {
+                    if (lastDot > lastSlash) {
                         current = current.substring(lastDot + 1);
                     } else {
                         current = "";

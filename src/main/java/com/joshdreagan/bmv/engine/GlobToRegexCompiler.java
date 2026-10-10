@@ -2,7 +2,6 @@ package com.joshdreagan.bmv.engine;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GlobToRegexCompiler {
