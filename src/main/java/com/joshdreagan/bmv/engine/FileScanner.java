@@ -1,7 +1,5 @@
 package com.joshdreagan.bmv.engine;
 
-import org.wildfly.common.annotation.NotNull;
-
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
