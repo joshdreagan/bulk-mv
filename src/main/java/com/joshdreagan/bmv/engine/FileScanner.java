@@ -32,15 +32,13 @@ public class FileScanner {
             int maxDepth = compiledPattern.isRecursive() ? Integer.MAX_VALUE : calculateDepth(compiledPattern.originalPattern());
             Files.walkFileTree(baseSearch, Collections.emptySet(), maxDepth, new SimpleFileVisitor<>() {
                 @Override
-                @NotNull
-                public FileVisitResult visitFile(@NotNull Path file, @NotNull BasicFileAttributes attrs) {
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                     discoveredPaths.add(file);
                     return FileVisitResult.CONTINUE;
                 }
 
                 @Override
-                @NotNull
-                public FileVisitResult preVisitDirectory(@NotNull Path dir, @NotNull BasicFileAttributes attrs) {
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
                     if (!dir.equals(baseSearch) && !dir.equals(workingDir)) {
                         discoveredPaths.add(dir);
                     }
