@@ -1,6 +1,6 @@
 package com.joshdreagan.bmv.engine;
 
-import io.smallrye.common.constraint.NotNull;
+import org.wildfly.common.annotation.NotNull;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
